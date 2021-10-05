@@ -10,11 +10,11 @@ export class AppComponent implements OnInit {
   title = 'hello sydney, welcome to fbc';
   companiesCount = 0;
 
-  // constructor(private companiesStateService: CompanyStateService) {
-  // }
+  constructor(private companiesStateService: CompanyStateService) {
+  }
 
   ngOnInit() {
-    // console.log("app component on init");
+    console.log("app component on init");
     // this.companiesStateService.loadCompanies();
     // this.companiesStateService.companies$
     //   .do(x => console.log('ngoninint1', x))
