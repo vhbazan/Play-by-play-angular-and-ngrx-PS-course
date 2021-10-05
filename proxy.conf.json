@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "https://firebootcamp-crm-api.azurewebsites.net/",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

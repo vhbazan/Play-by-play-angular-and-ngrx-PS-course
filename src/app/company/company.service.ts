@@ -3,18 +3,12 @@ import { Company } from './company';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-import { Store } from '@ngrx/store';
-import { AppState } from '../../models/appState';
-import { LOAD_COMPANIES } from '../../reducers/company.reducer';
-
-
 @Injectable()
 export class CompanyService {
 
-  API_BASE = 'http://firebootcamp-crm-api.azurewebsites.net/api';
+  API_BASE = 'https://firebootcamp-crm-api.azurewebsites.net/api';
 
   constructor(
-    private store: Store<AppState>,
     private http: Http) { }
 
   getCompany(companyId: number): Observable<Company> {
