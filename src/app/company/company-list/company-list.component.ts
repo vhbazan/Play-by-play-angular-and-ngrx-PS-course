@@ -3,7 +3,9 @@ import { Company } from '../company';
 import { CompanyService } from '../company.service';
 import { Observable } from 'rxjs/Observable';
 import { CompanyStateService } from '../company-state.service';
-// import * as companyActions from './../../actions/company.actions';
+import { Store } from '@ngrx/store';
+import { AppState } from 'app/models/app-state';
+import * as companyActions from "../../actions/company.actions";
 
 @Component({
   selector: 'fbc-company-list',
@@ -15,25 +17,24 @@ export class CompanyListComponent implements OnInit {
   companies$: Observable<Company[]>;
 
   constructor(
-    private companyService: CompanyService,
-    // private companyStateService: CompanyStateService
+    private store: Store<AppState>
   ) {
-    // this.companies$ = this.store.select(state => state.companies);
+    this.companies$ = this.store.select(state => state.companies);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getCompanies();
   }
 
-  getCompanies() {
+  getCompanies(): void {
+    this.store.dispatch(new companyActions.LoadCompaniesAction())
     // this.companyService.loadCompanies();
     // this.store.dispatch(new companyActions.LoadCompaniesAction());
-    this.companies$ = this.companyService.getCompanies();
     // this.companies$ = this.companyStateService.companies$;
   }
 
-  deleteCompany(companyId: number) {
-    this.companyService.deleteCompany(companyId)
+  deleteCompany(companyId: number): void {
+    // this.companyService.deleteCompany(companyId)
     //   .subscribe(() => this.getCompanies());
     // this.store.dispatch(new companyActions.DeleteCompanyAction(companyId));
   }
