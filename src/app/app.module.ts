@@ -11,6 +11,10 @@ import './core/rxjs-extensions';
 import { CompanyTableComponent } from './company/company-table/company-table.component';
 import { CompanyStateService } from './company/company-state.service';
 import { CompanyEditComponent } from './company/company-edit/company-edit.component';
+import { StoreModule } from '@ngrx/store';
+import { companyReducer } from './reducers/company.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { CompanyEffects } from './effects/company.effects';
 // import 'rxjs/Rx';
 
 
@@ -26,7 +30,9 @@ import { CompanyEditComponent } from './company/company-edit/company-edit.compon
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot({companies: companyReducer}),
+    EffectsModule.forRoot([CompanyEffects])
 
   ],
   providers: [
